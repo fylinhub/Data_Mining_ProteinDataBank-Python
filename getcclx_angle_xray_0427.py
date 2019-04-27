@@ -39,8 +39,6 @@ def caldist(c, x, p):
 	bc = c - b
 	return  np.linalg.norm(bc)
 
-
-
 surr_residue_dist = 3.5
 cx_bond_dist = 2.00  ## this is just for quickly identifying the C-X bond, should be larger than what we've known. 
 halogen='CL'   ## Need to be capital
@@ -53,9 +51,9 @@ dfn_bb = open('./results/detail_cl_nbb_angle.dat', 'w')
 dfnh = open('./results/detail_cl_nh_angle.dat', 'w')
 dfcarbonyl = open('./results/detail_cl_carbonyl_angle.dat', 'w')
 dfcarbonyl2_sidechain = open('./results/detail_cl_carbonylsidechaine_angle.dat', 'w')
-dfcx_info = open('./results/info_cx.dat', 'w')
-dfcount_info = open('./results/info_count.dat', 'w')
-dffail_info = open('./results/info_failed.dat', 'w')
+dfcx_info = open('info_cx.dat', 'w')
+dfcount_info = open('info_count.dat', 'w')
+dffail_info = open('info_failed.dat', 'w')
 ## record the number of hits
 number_all=0
 number_cxo=0         ## o on side chaine
@@ -147,8 +145,6 @@ for name in list1:
 											dist_xp = caldist(neighbors_c.get_coord(), neighbors_x.get_coord(), neighbors_p.get_coord())
 											dfcarbonyl2_sidechain.write( str(angle)+ "\t"+ str(dist_xp)+"\t"+str(neighbors_c.get_name())+"\t"+ str(neighbors_x.get_name())+ "\t"+ str(neighbors_p.get_name())+"\t"+str(neighbors_p.get_parent())+"\t\t"+str(pdb1)+"\n")
 											number_cxsideco=number_cxsideco+1 
-
-
 		os.system('rm %(pdb1)s' % locals())
 	except:
 		number_fail=number_fail+1 
